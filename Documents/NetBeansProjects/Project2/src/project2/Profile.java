@@ -27,7 +27,7 @@ public class Profile {
      */
     @Override
     public String toString(){
-        String empProfile = "Profile toString";
+        String empProfile = NAME + "::" + DEPARTMENT + "::" + "DATEHIRED";
         return empProfile;
     }
     /**
@@ -37,6 +37,11 @@ public class Profile {
      */
     @Override
     public boolean equals(Object obj){
-        return true;
+    	Profile object = (Profile) obj;
+    	if(this.NAME.equals(object.NAME) && this.DEPARTMENT.equals(object.DEPARTMENT) 
+    			&& this.DATEHIRED.equals(object.DATEHIRED))
+    		return true;
+    	
+    	return false;
     }
 }
