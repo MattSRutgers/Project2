@@ -17,7 +17,7 @@ public class Employee {
     private final String EMPLOYEE_NAME;
     private final String DEPARTMENT_CODE;
     private final Date HIRE_DATE;
-    private int payDueThisPeriod;
+    private double paymentDue;
     private final Profile employeeProfile;
 
     /**
@@ -27,8 +27,6 @@ public class Employee {
      * @param hireDate employees date hired
      */
     public Employee(String employeeName, String deptCode, Date hireDate){
-        //this.FIST_NAME = firstName;
-        //this.LAST_NAME = lastName;
         this.EMPLOYEE_NAME = employeeName;
         this.DEPARTMENT_CODE = deptCode;
         this.HIRE_DATE = hireDate;
@@ -43,8 +41,8 @@ public class Employee {
     @Override
     public String toString(){
     	this.calculatePayment();
-        String empDetails = LAST_NAME + "," + FIRST_NAME + "::" + DEPARTMENT_CODE
-        		+ "::" + HIRE_DATE + "::Payment $" + doubleToDollar(this.payment);
+        String empDetails = EMPLOYEE_NAME + "::" + DEPARTMENT_CODE
+        		+ "::" + HIRE_DATE + "::Payment $" + doubleToDollar(this.paymentDue);
         return empDetails;
     }
 
@@ -57,7 +55,7 @@ public class Employee {
     @Override
     public boolean equals(Object obj){
     	Employee object = (Employee) obj;
-    	if(this.profile.equals(object.profile))
+    	if(this.employeeProfile.equals(object.employeeProfile))
     		return true;
 
     	return false;
@@ -68,25 +66,18 @@ public class Employee {
 	}
 
 	public double getPayment() {
-		return this.payment;
+		return this.paymentDue;
 	}
 
-	public void setPayment(double payment) {
-		this.payment = payment;
+	public void setPayment(double paymentDue) {
+		this.paymentDue = paymentDue;
 	}
 
 	/**
 	 * @return the profile
 	 */
 	public Profile getProfile() {
-		return profile;
-	}
-
-	/**
-	 * @param profile the profile to set
-	 */
-	public void setProfile(Profile profile) {
-		this.profile = profile;
+		return employeeProfile;
 	}
 
 	public static String doubleToDollar(double value) {

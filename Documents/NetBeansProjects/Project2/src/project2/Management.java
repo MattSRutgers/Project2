@@ -6,14 +6,13 @@ public class Management extends Fulltime {
 	private final double[] COMPENSATION = {5000, 9500, 12000};
 	private final int NUM_PAY_PERIODS = 26;
 	
-	public Management(String firstName, String lastName, String deptCode, String hireDate) {
-		super(firstName, lastName, deptCode, hireDate);
+	public Management(String employeeName, String deptCode, Date hireDate) {
+		super(employeeName, deptCode, hireDate);
 		this.position = 0;
 	}
 	
-	public Management(String firstName, String lastName, String deptCode, String hireDate, 
-			int position) {
-		super(firstName, lastName, deptCode, hireDate);
+	public Management(String employeeName, String deptCode, Date hireDate, int position) {
+		super(employeeName, deptCode, hireDate);
 		this.position = position;
 	}
 	

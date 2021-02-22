@@ -6,13 +6,13 @@ public class Parttime extends Employee {
 	private double hourlyRate;
 	private int hoursWorked;
 
-	public Parttime(String firstName, String lastName, String deptCode, String hireDate) {
-		super(firstName, lastName, deptCode, hireDate);
+	public Parttime(String employeeName, String deptCode, Date hireDate) {
+		super(employeeName, deptCode, hireDate);
 		this.hourlyRate = 0;
 	}
 
-	public Parttime(String firstName, String lastName, String deptCode, String hireDate, double rate) {
-		super(firstName, lastName, deptCode, hireDate);
+	public Parttime(String employeeName, String deptCode, Date hireDate, double rate) {
+		super(employeeName, deptCode, hireDate);
 		this.hourlyRate = rate;
 	}
 

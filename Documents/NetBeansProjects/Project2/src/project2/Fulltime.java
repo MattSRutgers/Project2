@@ -4,14 +4,14 @@ public class Fulltime extends Employee {
 	private double annualSalary;
 	private final int NUM_PAY_PERIODS = 26;
 	
-	public Fulltime(String firstName, String lastName, String deptCode, String hireDate) {
-		super(firstName, lastName, deptCode, hireDate);
+	public Fulltime(String employeeName, String deptCode, Date hireDate) {
+		super(employeeName, deptCode, hireDate);
 		this.setAnnualSalary(0);
 	}
 	
-	public Fulltime(String firstName, String lastName, String deptCode, String hireDate, 
+	public Fulltime(String employeeName, String deptCode, Date hireDate, 
 			double salary) {
-		super(firstName, lastName, deptCode, hireDate);
+		super(employeeName, deptCode, hireDate);
 		this.setAnnualSalary(salary);
 	}
 
@@ -23,7 +23,7 @@ public class Fulltime extends Employee {
 	}
 
 	/**
-	 * @param annualSalary the salary to set
+	 * @param annualSalary value which annualSalary will be set to
 	 */
 	public void setAnnualSalary(double annualSalary) {
 		this.annualSalary = annualSalary;
