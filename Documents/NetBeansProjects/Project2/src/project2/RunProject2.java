@@ -16,6 +16,8 @@ public class RunProject2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        PayrollProcessing payroll = new PayrollProcessing();
+        payroll.run();
     }
     
 }

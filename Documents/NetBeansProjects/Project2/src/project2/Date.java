@@ -11,7 +11,7 @@ import java.util.Calendar;
  *
  * @author Matthew Schilling and Gordon Miller
  */
-public class Date {
+public class Date implements Comparable<Date> {
     private int year;
     private int month;
     private int day;
@@ -34,6 +34,19 @@ public class Date {
     public Date() { 
         Calendar today = Calendar.getInstance();
         today.getTime();
+    }
+    
+    /**
+     * The compareTo method compares two date objects to see if they are the 
+     * same
+     * @param date the date object we are comparing
+     * @return compareDate, which is -1 if the date was invalid, 0 if not found
+     * and 1 if it matches
+     */
+    @Override
+    public int compareTo(Date date){
+        int compareDate = -1;
+        return compareDate;
     }
     /**
      * isValid method ensures the date supplied by the user is a valid date.

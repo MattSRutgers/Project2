@@ -13,6 +13,8 @@ package project2;
 public class Company {
     private Employee[] emplist;
     private int numEmployee;
+    private static final int GROW_SIZE = 4;
+    
     
     /**
      * The find employee method searches for a given employee in the list

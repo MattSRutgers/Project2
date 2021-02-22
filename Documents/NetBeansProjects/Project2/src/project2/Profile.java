@@ -11,10 +11,16 @@ package project2;
  * @author Matthew Schilling and Gordon Miller
  */
 public class Profile {
-    private String name;
-    private String department;
-    private Date dateHired;
+    private final String NAME;
+    private final String DEPARTMENT;
+    private final Date DATEHIRED;
     
+    public Profile (String name, String dept, Date dateHired){
+        this.NAME = name;
+        this.DEPARTMENT = dept;
+        this.DATEHIRED = dateHired;
+    
+    }
     /**
      * The toString method formats the profile information neatly into a string
      * @return the string containing the profile information
