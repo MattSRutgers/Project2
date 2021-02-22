@@ -66,20 +66,20 @@ public class Date implements Comparable<Date> {
      * allows access to dates year value as a int
      * @return int representing the year, 1900-2021 are valid
      */
-    public int getYear() {
-    	return this.year;
-    }
-    /**
-     * allows access to dates month value as a int
-     * @return int representing the month of the year, 1-12 are valid
-     */
-    public int getMonth() {
-    	return this.month;
-    }/**
-     * allows access to a dates day value as a int
-     * @return int representing the day of the month, 1-31 are valid
-     */
-    public int getDay() {
-    	return this.day;
-    }
+//    public int getYear() {
+//    	return this.year;
+//    }
+//    /**
+//     * allows access to dates month value as a int
+//     * @return int representing the month of the year, 1-12 are valid
+//     */
+//    public int getMonth() {
+//    	return this.month;
+//    }/**
+//     * allows access to a dates day value as a int
+//     * @return int representing the day of the month, 1-31 are valid
+//     */
+//    public int getDay() {
+//    	return this.day;
+//    }
 }
