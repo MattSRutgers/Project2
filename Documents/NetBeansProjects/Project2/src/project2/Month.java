@@ -64,12 +64,12 @@ public class Month {
         }
         else if (USER_MONTH == FEB){
             if (USER_DAY > FEB_DAYS){
-                checkLeap = USER_YEAR %QUADRENNIAL;
-                if(checkLeap == 0){
+                checkLeap = USER_YEAR % QUADRENNIAL;
+                if ( checkLeap == 0){
                     checkLeap = USER_YEAR % CENTENNIAL;
-                    if(checkLeap == 0){
+                    if ( checkLeap == 0){
                         checkLeap = USER_YEAR % QUATERCENTENNIAL;
-                        if (checkLeap == 0)
+                        if ( checkLeap == 0)
                             isValid = true;
                     }
                 }

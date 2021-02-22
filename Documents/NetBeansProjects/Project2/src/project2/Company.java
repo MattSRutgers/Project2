@@ -11,10 +11,18 @@ package project2;
  * 
  */
 public class Company {
-    private Employee[] emplist;
+    private Employee[] empList;
     private int numEmployee;
     private static final int GROW_SIZE = 4;
     
+    /**
+     * The default constructor for the Company class creates a new array of
+     * employee class objects and assigns it to the emplist variable.
+     */
+    public Company (){
+        empList = new Employee[GROW_SIZE];
+        numEmployee = 0;
+    }
     
     /**
      * The find employee method searches for a given employee in the list
@@ -30,7 +38,12 @@ public class Company {
      * The grow method is automatically called when the employee list is full
      */
     private void grow(){
-    
+        int newLength = empList.length + GROW_SIZE;
+        Employee[] tempBag = new Employee[newLength];
+        for(int i = 0; i<empList.length; i++){
+        	tempBag[i] = empList[i];
+        }
+        empList = tempBag;
     }
     
     /**
@@ -40,6 +53,11 @@ public class Company {
      * @return true if successfully added, false if they already existed.
      */
     public boolean add(Employee employee){
+        int checkExists = find(employee);
+        if(checkExists == -1)
+            return false;
+        //Create a new instance of an employee and add it to the list
+        numEmployee ++;
         return true;
     }
     
@@ -50,7 +68,17 @@ public class Company {
      * @return true if found and removed, false if they did not exist.
      */
     public boolean remove(Employee employee){
-        return true;
+        int getIndex = find(employee);
+        if(getIndex == -1)
+            return false;
+        Employee[] tempBag = new Employee[empList.length - 1];
+        for(int i = 0, j = 0; i<empList.length; i++){
+            if(i != getIndex)
+                tempBag[j++] = empList[i];
+        }
+        empList = tempBag;
+        numEmployee --;
+    	return true;
     }
     
     /**
@@ -59,26 +87,72 @@ public class Company {
      * @return true if successfully found and updated. False otherwise
      */
     public boolean setHours(Employee employee){
+        int getIndex = find(employee);
+        int workedHours;
+        if(getIndex == -1)
+            return false;
+        Parttime tempEmp = (Parttime)empList[getIndex];
         return true;
     }
     
-    
+    /**
+     * The processPayments method loops through the list of employees and 
+     * calculates how much they should be paid this period.
+     */
     public void processPayments(){
-        
+        for (Employee employee : empList){
+            employee.calculatePayment();
+        }
     } //process payments for all employees
     
-    
+    /**
+     * The print method loops through the employee list and prints info for
+     * each employee using the toString method.
+     */
     public void print(){
-        
-    } //print earning statements for all employees
+        System.out.println("--Printing earning statements for all employees--");
+        for (Employee employee : empList){
+            System.out.println(employee.toString());
+        } 
+    }
     
-    
+    /**
+     * The printByDepartment method loops through the employee list and sorts
+     * by the department code, and then prints all employees.
+     */
     public void printByDepartment(){
-        
+        Employee tempEmp;
+        for(int i = 0; i<empList.length; i++){
+            for(int j = 1; j<empList.length; j++){
+                String empOneDeptCode = empList[j-1].getDepartment();
+                String empTwoDeptCode = empList[j].getDepartment();
+                if(empTwoDeptCode.compareToIgnoreCase(empOneDeptCode)<0){
+                    tempEmp = empList[j-1];
+                    empList[j-1] = empList[j];
+                    empList[j] = tempEmp;
+                    }
+            }
+        }
+        for (Employee employee : empList){
+            System.out.println(employee.toString());
+        }
     } //print earning statements by department
     
-    
+    /**
+     * The printByDate method sorts the employee list by their hire date then
+     * prints the list of employees using the .toString() method
+     */
     public void printByDate(){
-        
-    } //print earning statements by date hired
+        Employee tempEmp;
+        for(int i = 0; i<empList.length; i++){
+            for(int j = 1; j<empList.length; j++){
+                Date empOneDate = empList[j-1].getDate();
+                Date empTwoDate = empList[j].getDate();
+            }
+        }
+        System.out.println("--Printing earning statements for all employees--");
+        for (Employee employee : empList){
+            System.out.println(employee.toString());
+        }
+    }
 }

@@ -21,6 +21,39 @@ public class PayrollProcessing {
             userCommand = userInput.split("\\s+");
 
             String curCommand = userCommand[0];
+            switch (curCommand){
+                case "AP":
+                    
+                    break;
+                
+                case "AF":
+                    break;
+                
+                case "AM":
+                    break;
+                
+                case "R":
+                    break;
+                    
+                case "C":
+                    break;
+                    
+                case "S":
+                    break;
+                    
+                case "PA":
+                    break;
+                    
+                case "PH":
+                    break;
+                    
+                case "PD":
+                    break;
+                    
+                default:
+                    System.out.println("Command " + curCommand + 
+                                       " not supported");
+            }
             
         }while(!"Q".equals(userCommand[0]));
 
