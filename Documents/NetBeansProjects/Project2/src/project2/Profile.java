@@ -37,6 +37,11 @@ public class Profile {
      */
     @Override
     public boolean equals(Object obj){
-        return true;
+        if (obj instanceof Profile){
+            if (this.NAME.equalsIgnoreCase(((Profile) obj).NAME)){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -15,7 +15,7 @@ public class Employee {
     private final String EMPLOYEE_NAME;
     private final String DEPARTMENT_CODE;
     private final Date HIRE_DATE;
-    private int payDueThisPeriod;
+    private double payDueThisPeriod;
     private final Profile employeeProfile;
     
     /**
@@ -52,7 +52,10 @@ public class Employee {
      */
     @Override
     public boolean equals(Object obj){
-        return true;
+        Employee temp = (Employee) obj;
+        if(this.employeeProfile.equals(temp.getProfile()))
+            return true;
+        return false;
     }
     
     /**
@@ -74,6 +77,13 @@ public class Employee {
     
     public Date getDate(){
         return this.HIRE_DATE;
+    }
+    
+    public void setPayDue(double payDue){
+        this.payDueThisPeriod = payDue;
+    }
+    private Profile getProfile(){
+        return this.employeeProfile;
     }
 
 }

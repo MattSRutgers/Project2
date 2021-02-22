@@ -12,7 +12,7 @@ package project2;
  */
 public class Parttime extends Employee{
     private double payRate;
-    private int hoursWorked;
+    private double hoursWorked;
     
     
     public Parttime(String employeeName, String deptCode, Date hireDate,
@@ -25,10 +25,16 @@ public class Parttime extends Employee{
     public String toString(){
         String empDetails = "Part Time To String";
         
-        super.toString();
+        //super.toString();
         return empDetails;
     }
-    public void setHours(int hoursWorked){
+    public void setHours(double hoursWorked){
         this.hoursWorked = hoursWorked;
+    }
+    
+    @Override
+    public void calculatePayment(){
+        double employeeDue = payRate * hoursWorked;
+        super.setPayDue(employeeDue);
     }
 }
