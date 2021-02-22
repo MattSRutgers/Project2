@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package project2;
+
+import java.text.DecimalFormat;
 
 /**
  *
- * @author Matthew Schilling and Gordon Miller 
+ * @author Matthew Schilling and Gordon Miller
  */
 public class Employee {
     //private final String FIST_NAME;
@@ -15,9 +12,9 @@ public class Employee {
     private final String EMPLOYEE_NAME;
     private final String DEPARTMENT_CODE;
     private final Date HIRE_DATE;
-    private double payDueThisPeriod;
+    private double paymentDue;
     private final Profile employeeProfile;
-    
+
     /**
      * The 3 param constructor will be called when an employee is added
      * @param employeeName
@@ -25,14 +22,12 @@ public class Employee {
      * @param hireDate employees date hired
      */
     public Employee(String employeeName, String deptCode, Date hireDate){
-        //this.FIST_NAME = firstName;
-        //this.LAST_NAME = lastName;
         this.EMPLOYEE_NAME = employeeName;
         this.DEPARTMENT_CODE = deptCode;
         this.HIRE_DATE = hireDate;
         employeeProfile = new Profile(employeeName, deptCode, hireDate);
     }
-    
+
     /**
      * The toString method formats the employees data neatly and returns it as
      * one string object
@@ -40,10 +35,12 @@ public class Employee {
      */
     @Override
     public String toString(){
-        String empDetails = "Emp toString";
+    	this.calculatePayment();
+        String empDetails = EMPLOYEE_NAME + "::" + DEPARTMENT_CODE
+        		+ "::" + HIRE_DATE + "::Payment $" + doubleToDollar(this.paymentDue);
         return empDetails;
     }
-    
+
     /**
      * The equals method compares two employee profiles to determine if they
      * match
@@ -52,38 +49,46 @@ public class Employee {
      */
     @Override
     public boolean equals(Object obj){
-        Employee temp = (Employee) obj;
-        if(this.employeeProfile.equals(temp.getProfile()))
-            return true;
-        return false;
+    	Employee object = (Employee) obj;
+    	if(this.employeeProfile.equals(object.employeeProfile))
+    		return true;
+
+    	return false;
     }
-    
-    /**
-     * The calculatePayment method determines how much the employee should be 
-     * paid for the 2 week pay period.
-     * @param Paydue the amount due to the employee.
-     */
-    
-    /**
-     * The calculatePayment method enables subclasses to calculate how much 
-     * the employee earned
-     */
-    public void calculatePayment(){
-    }
-    
+
+	public void calculatePayment() {
+
+	}
+
+	public double getPayment() {
+		return this.paymentDue;
+	}
+
+	public void setPayment(double paymentDue) {
+		this.paymentDue = paymentDue;
+	}
+
+	/**
+	 * @return the profile
+	 */
+	public Profile getProfile() {
+		return employeeProfile;
+	}
+
+	public static String doubleToDollar(double value) {
+		DecimalFormat dollarFormatter = new DecimalFormat("#.00");
+    	dollarFormatter.setGroupingUsed(true);
+    	dollarFormatter.setGroupingSize(3);
+    	String valueStr = dollarFormatter.format(value);
+    	return valueStr;
+	}
+
     public String getDepartment(){
         return this.DEPARTMENT_CODE;
     }
-    
+
     public Date getDate(){
         return this.HIRE_DATE;
-    }
-    
-    public void setPayDue(double payDue){
-        this.payDueThisPeriod = payDue;
-    }
-    private Profile getProfile(){
-        return this.employeeProfile;
     }
 
 }
