@@ -1,22 +1,29 @@
 package project2;
 
+/**
+* The Fulltime class extends the Employee class and includes specific data and 
+* operations to a full-time employee.
+* @author Matthew Schilling and Gordon Miller
+*/
 public class Fulltime extends Employee {
 	private double annualSalary;
 	private final int NUM_PAY_PERIODS = 26;
 	
-	public Fulltime(String employeeName, String deptCode, Date hireDate) {
-		super(employeeName, deptCode, hireDate);
-		this.setAnnualSalary(0);
-	}
-	
+	/**
+     * The 4 param constructor will be called when a full time employee is added
+     * @param employeeName
+     * @param deptCode employees department code
+     * @param hireDate employees date hired
+     * @param salary employee's annual salary
+     */
 	public Fulltime(String employeeName, String deptCode, Date hireDate, 
 			double salary) {
 		super(employeeName, deptCode, hireDate);
-		this.setAnnualSalary(salary);
+		this.annualSalary = salary;
 	}
 
 	/**
-	 * @return the employee's annual salary
+	 * @return an employee's annual salary
 	 */
 	public double getAnnualSalary() {
 		return annualSalary;
@@ -29,6 +36,10 @@ public class Fulltime extends Employee {
 		this.annualSalary = annualSalary;
 	}
 	
+	/**
+	 * The calulatePayment method calculates the payment for a full time 
+	 * employee in the current payment period
+	 */
 	public void calculatePayment() {
 		double pay = this.annualSalary/NUM_PAY_PERIODS;
 		super.setPayment(pay);

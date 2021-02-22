@@ -8,7 +8,8 @@ package project2;
 import java.text.DecimalFormat;
 
 /**
- *
+ * The Employee class defines the common data and operations for all employee 
+ * type; each employee has a profile that uniquely identifies the employee. 
  * @author Matthew Schilling and Gordon Miller
  */
 public class Employee {
@@ -42,7 +43,8 @@ public class Employee {
     public String toString(){
     	this.calculatePayment();
         String empDetails = EMPLOYEE_NAME + "::" + DEPARTMENT_CODE
-        		+ "::" + HIRE_DATE + "::Payment $" + doubleToDollar(this.paymentDue);
+        		+ "::" + HIRE_DATE + "::Payment $" + 
+        		doubleToDollar(this.paymentDue);
         return empDetails;
     }
 
@@ -61,25 +63,43 @@ public class Employee {
     	return false;
     }
 
+    /**
+	 * The calulatePayment method calculates the payment for this employee in 
+	 * the current payment period
+	 */
 	public void calculatePayment() {
-
 	}
 
+	/**
+	 * @return the payment value for an employee in the current payment
+	 * period
+	 */
 	public double getPayment() {
+		this.calculatePayment();
 		return this.paymentDue;
 	}
 
+	/**
+	 * Sets the payment value for an employee in the current payment period
+	 * @param paymentDue value which paymentDue will be set to
+	 */
 	public void setPayment(double paymentDue) {
 		this.paymentDue = paymentDue;
 	}
 
 	/**
-	 * @return the profile
+	 * @return the employee profile
 	 */
 	public Profile getProfile() {
 		return employeeProfile;
 	}
-
+	
+	/**
+	 * The doubleToDollar method is a helper method which converts a given 
+	 * double to a string that matches US dollar conventions
+	 * @param value the double value to be converted
+	 * @return a string that is in US dollar conventions
+	 */
 	public static String doubleToDollar(double value) {
 		DecimalFormat dollarFormatter = new DecimalFormat("#.00");
     	dollarFormatter.setGroupingUsed(true);
@@ -88,10 +108,16 @@ public class Employee {
     	return valueStr;
 	}
 
+	/**
+	 * @return an employee's department code
+	 */
     public String getDepartment(){
         return this.DEPARTMENT_CODE;
     }
 
+    /**
+     * @return an employee's hire date
+     */
     public Date getDate(){
         return this.HIRE_DATE;
     }

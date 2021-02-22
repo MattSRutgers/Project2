@@ -6,7 +6,7 @@
 package project2;
 
 /**
- *The Company class uses an array as a container to manage an employee database
+ * The Company class uses an array as a container to manage an employee database
  * @author Matthew Schilling and Gordon Miller
  * 
  */
