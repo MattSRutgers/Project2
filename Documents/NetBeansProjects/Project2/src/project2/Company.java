@@ -26,7 +26,9 @@ public class Company {
     }
     
     /**
-     * The find employee method searches for a given employee in the list
+     * The find employee method searches for a given employee in the list. It 
+     * assumes the employee is not in the list, and only updates its return
+     * if the employee is found.
      * @param employee the employee we are looking for
      * @return the index of the employee in the list, or -1 if not found
      */
@@ -65,7 +67,7 @@ public class Company {
             return false;
         //Create a new instance of an employee and add it to the list
         empList[numEmployee] = employee;
-        numEmployee ++;
+        numEmployee += 1;
         return true;
     }
     
@@ -120,6 +122,7 @@ public class Company {
     public void print(){
         System.out.println("--Printing earning statements for all employees--");
         for (int i = 0; i < numEmployee; i++){
+            System.out.println("Looping " + i);
             System.out.println(empList[i].toString());
         } 
     }

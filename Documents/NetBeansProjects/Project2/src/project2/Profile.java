@@ -39,7 +39,9 @@ public class Profile {
     public boolean equals(Object obj){
         if (obj instanceof Profile){
             if (this.NAME.equalsIgnoreCase(((Profile) obj).NAME)){
-                return true;
+                if(this.DEPARTMENT.equalsIgnoreCase(((Profile) obj).DEPARTMENT))
+                    if(this.DATEHIRED.equals(((Profile) obj).DEPARTMENT))
+                        return true;
             }
         }
         return false;
