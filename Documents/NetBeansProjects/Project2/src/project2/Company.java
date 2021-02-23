@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package project2;
 
 /**
@@ -89,7 +84,7 @@ public class Company {
                 tempBag[j++] = empList[i];
         }
         empList = tempBag;
-        numEmployee --;
+        numEmployee -= 1;
     	return true;
     }
     
@@ -100,9 +95,10 @@ public class Company {
      */
     public boolean setHours(Employee employee){
         int getIndex = find(employee);
-        int workedHours;
         if(getIndex == -1)
             return false;
+        int workedHours = ((Parttime)employee).getHours();
+        ((Parttime)empList[getIndex]).setHours(workedHours);
         Parttime tempEmp = (Parttime)empList[getIndex];
         return true;
     }
@@ -135,9 +131,13 @@ public class Company {
     public void printByDepartment(){
         Employee tempEmp;
         for(int i = 0; i<empList.length; i++){
-            for(int j = 1; j<empList.length; j++){
-                String empOneDeptCode = empList[j-1].getDepartment();
-                String empTwoDeptCode = empList[j].getDepartment();
+            for(int j = 1; j<numEmployee; j++){
+                Employee empOne = ((Employee)empList[j-1]);
+                Employee empTwo = ((Employee)empList[j]);
+                String empOneDeptCode = empOne.getDepartment();
+                String empTwoDeptCode = empTwo.getDepartment();
+//                System.out.println("One " + empOneDeptCode);
+//                System.out.println("Two " + empTwoDeptCode);
                 if(empTwoDeptCode.compareToIgnoreCase(empOneDeptCode)<0){
                     tempEmp = empList[j-1];
                     empList[j-1] = empList[j];
@@ -146,8 +146,8 @@ public class Company {
             }
         }
         System.out.println("--Printing earning statements by department--");
-        for (Employee employee : empList){
-            System.out.println(employee.toString());
+        for (int i = 0; i < numEmployee; i++){
+            System.out.println(empList[i].toString());
         }
     }
     
@@ -158,20 +158,20 @@ public class Company {
     public void printByDate(){           
         Employee tempEmp;
         for( int i = 0; i<empList.length; i++ ){
-            for( int j = 1; j<empList.length; j++ ){
+            for( int j = 1; j<numEmployee; j++ ){
                 Date empOneDate = empList[j-1].getDate();
                 Date empTwoDate = empList[j].getDate();
                 if(empOneDate.compareTo(empTwoDate) < 0 ){
                     tempEmp = empList[j-1];
                     empList[j-1] = empList[j];
                     empList[j] = tempEmp;
+                }
             }
         }
         System.out.println("--Printing earning statements by date hired--");
-        for (Employee employee : empList){
-            System.out.println(employee.toString());
+        for (int i = 0; i < numEmployee; i++){
+            System.out.println(empList[i].toString());
         }
-    }
     }
     public boolean checkEmpty(){
         return numEmployee == 0;

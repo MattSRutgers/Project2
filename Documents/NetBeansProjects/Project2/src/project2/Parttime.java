@@ -1,6 +1,6 @@
 package project2;
 
-import java.text.DecimalFormat;
+//import java.text.DecimalFormat;
 
 public class Parttime extends Employee {
 	private double hourlyRate;
@@ -16,7 +16,7 @@ public class Parttime extends Employee {
 		this.hourlyRate = rate;
 	}
 
-	public double getHours() {
+	public int getHours() {
 		return this.hoursWorked;
 	}
 

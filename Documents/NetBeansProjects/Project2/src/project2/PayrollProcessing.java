@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package project2;
 import java.util.Scanner;
 /**
@@ -14,30 +9,36 @@ public class PayrollProcessing {
     Scanner sc = new Scanner(System.in);
     private String[] userCommand;
     Company company = new Company();
+    private static final int MAX_MANAGER_CODE = 3;
     
     public void run(){
-        System.out.println("Library Kiosk running");
+        System.out.println("Payroll Processsing starts.");
         
         do {
             String userInput = sc.nextLine();
             userCommand = userInput.split("\\s+");
             String hireDate;
             Date newHireDate = null;
+            double payRate = 0;
             //Check the hire date is valid
             try{
             hireDate = userCommand[3];
-            
+            payRate = Double.valueOf(userCommand[4]);
             newHireDate = new Date(hireDate);
             if (!newHireDate.isValid()){
                 System.out.println( userCommand[3] + " is not a valid date");
-                break;
+                continue;
             }
             }catch(IndexOutOfBoundsException e){}
             String curCommand = userCommand[0];
             
             switch (curCommand){
                 case "AP":
-                    double payRate = Double.valueOf(userCommand[4]);
+                    //double payRate = Double.valueOf(userCommand[4]);
+                    if(payRate < 0){
+                        System.out.println("Pay Rate Cannot be zero");
+                        break;
+                    }
                     Employee newPartTimer = new Parttime(userCommand[1],
                     userCommand[2], newHireDate, payRate);
                     company.add(newPartTimer);
@@ -45,18 +46,29 @@ public class PayrollProcessing {
                     break;
                 
                 case "AF":
-                    double salary = Double.valueOf(userCommand[4]);
+                    if(payRate < 0){
+                        System.out.println("Salary Cannot be negative");
+                        break;
+                    }
                     Employee newFullTimer = new Fulltime(userCommand[1],
-                    userCommand[2], newHireDate, salary);
+                    userCommand[2], newHireDate, payRate);
                     company.add(newFullTimer);
                     System.out.println("Full time employee added.");
                     break;
                 
                 case "AM":
-                    double managementSalary = Double.valueOf(userCommand[4]);
                     int managerCode = Integer.parseInt(userCommand[5]);
+                    if(managerCode > MAX_MANAGER_CODE || managerCode == 0){
+                        System.out.println("Invalid Manager Code");
+                        break;
+                    }
+                    if(payRate < 0 ){
+                        System.out.println("Salary cannot be negative");
+                        break;
+                    }
+                    managerCode -= 1;
                     Employee newManager = new Management(userCommand[1],
-                        userCommand[2], newHireDate, managementSalary, 
+                        userCommand[2], newHireDate, payRate, 
                         managerCode);
                     company.add(newManager);
                     System.out.println("Manager Added.");
@@ -72,16 +84,30 @@ public class PayrollProcessing {
                     break;
                     
                 case "C":
+                    if (company.checkEmpty())
+                        System.out.println("Employee database is empty");
                     company.processPayments();
                     System.out.println("Calculation of employee payments is"
                                         + " done");
                     break;
                     
                 case "S":
+                    if (company.checkEmpty())
+                        System.out.println("Employee database is empty");
+                    int hoursWorked = (int) payRate;
+                    System.out.println("Hours worked " + hoursWorked);
+//                    try{
+//                        hoursWorked = Integer.getInteger(userCommand[4]);
+//                    }catch(IndexOutOfBoundsException event){}
+                    Parttime updateHours = new Parttime(userCommand[1],
+                        userCommand[2], newHireDate);
+                    updateHours.setHours(hoursWorked);
+                    System.out.println("Part time hours worked" + hoursWorked);
+                    company.setHours(updateHours);
                     break;
                     
                 case "PA":
-                    if (company.checkEmpty()){
+                    if ( company.checkEmpty() ){
                         System.out.println("Employee database is empty ");
                         break;
                     }
