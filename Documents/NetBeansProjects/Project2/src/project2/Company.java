@@ -32,6 +32,7 @@ public class Company {
         Profile findEmployee = employee.getProfile();
         for (int i = 0; i <numEmployee; i++){
             Profile checkThisEmployee = empList[i].getProfile();
+            System.out.println("check" + checkThisEmployee + "find" + findEmployee);
             if (checkThisEmployee.equals(findEmployee))
                 index = i;
         }
@@ -95,11 +96,17 @@ public class Company {
      */
     public boolean setHours(Employee employee){
         int getIndex = find(employee);
-        if(getIndex == -1)
+        if(getIndex == -1){
+            System.out.println("Going back early");
             return false;
+        }
+        System.out.println("Set Hours Index = " + getIndex);
         int workedHours = ((Parttime)employee).getHours();
+        System.out.println("Hours after cast " + workedHours);
+        //empList[getIndex].setHours(workedHours);
         ((Parttime)empList[getIndex]).setHours(workedHours);
         Parttime tempEmp = (Parttime)empList[getIndex];
+        System.out.println(" after i think i added " +tempEmp.getHours());
         return true;
     }
     

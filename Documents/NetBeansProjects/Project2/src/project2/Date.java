@@ -41,7 +41,7 @@ public class Date implements Comparable<Date> {
      * @param date the date object we are comparing
      * @return compareDate, which is -1 if the passed date is before this date,
      * 0 if the two dates are equal and 1 if the passed date is after
-     * and 1 if it matches
+     * 
      */
     @Override
     public int compareTo(Date date){

@@ -103,7 +103,8 @@ public class PayrollProcessing {
                         userCommand[2], newHireDate);
                     updateHours.setHours(hoursWorked);
                     System.out.println("Part time hours worked" + hoursWorked);
-                    company.setHours(updateHours);
+                    if( ! company.setHours(updateHours))
+                        System.out.println("Hours not updated");
                     break;
                     
                 case "PA":
