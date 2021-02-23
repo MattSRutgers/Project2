@@ -38,7 +38,7 @@ public class Profile {
                 if(this.DEPARTMENT.equalsIgnoreCase(((Profile) obj).DEPARTMENT)){
                     //System.out.println("Dept equal");
                     if(this.DATEHIRED.compareTo(((Profile) obj).DATEHIRED) == 0){
-                       // System.out.println("Date equal");
+                        //System.out.println("Date equal");
                         return true;
                     }
                 }

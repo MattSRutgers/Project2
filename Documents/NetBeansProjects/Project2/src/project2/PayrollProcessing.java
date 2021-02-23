@@ -126,7 +126,8 @@ public class PayrollProcessing {
                     Parttime updateHours = new Parttime(userCommand[1],
                         deptCode, newHireDate, hoursWorked);
                     updateHours.setHours(hoursWorked);
-                    //System.out.println("Part time hours worked" + hoursWorked);
+                    company.setHours(updateHours);
+                    //System.out.println("Part time hours worked " + hoursWorked);
 //                    if( ! company.setHours(updateHours))
 //                        System.out.println("Hours not updated");
                     break;
