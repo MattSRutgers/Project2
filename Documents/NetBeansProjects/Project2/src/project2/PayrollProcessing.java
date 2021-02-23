@@ -23,13 +23,16 @@ public class PayrollProcessing {
             //Check the hire date is valid
             try{
             hireDate = userCommand[3];
-            payRate = Double.valueOf(userCommand[4]);
-            newHireDate = new Date(hireDate);
-            if (!newHireDate.isValid()){
-                System.out.println( userCommand[3] + " is not a valid date");
-                continue;
+                newHireDate = new Date(hireDate);
+                if (!newHireDate.isValid()){
+                    System.out.println( userCommand[3] + " is not a valid date");
+                    continue;
             }
             }catch(IndexOutOfBoundsException e){}
+            try{
+                payRate = Double.valueOf(userCommand[4]);
+            }
+            catch(IndexOutOfBoundsException e){}
             String curCommand = userCommand[0];
 
             switch (curCommand){

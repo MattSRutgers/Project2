@@ -37,9 +37,9 @@ public class Profile {
         //String findDate = ((Profile) obj).DATEHIRED.toString();
         if (obj instanceof Profile){
             if (this.NAME.equalsIgnoreCase(((Profile) obj).NAME)){
-                System.out.println("Name equal");
+                System.out.println("Name equal" + ((Profile) obj).NAME);
                 if(this.DEPARTMENT.equalsIgnoreCase(((Profile) obj).DEPARTMENT)){
-                    System.out.println("Dept equal");
+                    System.out.println("Dept equal" + ((Profile) obj).DEPARTMENT);
                     if(this.DATEHIRED.compareTo(((Profile) obj).DATEHIRED) == 0){
                         System.out.println("Date equal");
                         return true;
