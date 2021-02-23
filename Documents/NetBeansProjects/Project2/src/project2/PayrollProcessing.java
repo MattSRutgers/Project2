@@ -112,24 +112,20 @@ public class PayrollProcessing {
                     break;
 
                 case "S":
+                	int hoursWorked = (int) payRate;
                     if (company.checkEmpty())
                         System.out.println("Employee database is empty");
-                    int hoursWorked = (int) payRate;
-                    if (hoursWorked < 0 || hoursWorked >100){
+                    else if(hoursWorked < 0 || hoursWorked >100){
                         System.out.println("Invalid Hours");
                         break;
                     }
-                    //System.out.println("Hours worked " + hoursWorked);
-//                    try{
-//                        hoursWorked = Integer.getInteger(userCommand[4]);
-//                    }catch(IndexOutOfBoundsException event){}
-                    Parttime updateHours = new Parttime(userCommand[1],
-                        deptCode, newHireDate, hoursWorked);
-                    updateHours.setHours(hoursWorked);
-                    company.setHours(updateHours);
-                    //System.out.println("Part time hours worked " + hoursWorked);
-//                    if( ! company.setHours(updateHours))
-//                        System.out.println("Hours not updated");
+                    else{
+	                    Parttime updateHours = new Parttime(userCommand[1],
+	                        deptCode, newHireDate, hoursWorked);
+	                    updateHours.setHours(hoursWorked);
+	                    company.setHours(updateHours);
+	                    System.out.println("Employee hours set.");
+                    }
                     break;
 
                 case "PA":
