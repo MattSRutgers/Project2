@@ -11,11 +11,16 @@ public class Management extends Fulltime {
 		this.position = 0;
 	}
 	
-	public Management(String employeeName, String deptCode, Date hireDate, int position) {
-		super(employeeName, deptCode, hireDate);
+	public Management(String employeeName, String deptCode, Date hireDate, 
+                           double salary, int position) {
+		super(employeeName, deptCode, hireDate, salary);
 		this.position = position;
 	}
-	
+        
+        /**
+         * The calculatePayment method 
+         */
+	@Override
 	public void calculatePayment() {
 		double pay = super.getAnnualSalary()/NUM_PAY_PERIODS;
 		pay += this.COMPENSATION[position]/NUM_PAY_PERIODS;

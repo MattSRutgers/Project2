@@ -28,7 +28,10 @@ public class Fulltime extends Employee {
 	public void setAnnualSalary(double annualSalary) {
 		this.annualSalary = annualSalary;
 	}
-	
+        /**
+         * The calculatePayment determines the pay owed for 
+         */
+	@Override
 	public void calculatePayment() {
 		double pay = this.annualSalary/NUM_PAY_PERIODS;
 		super.setPayment(pay);

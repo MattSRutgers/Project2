@@ -14,6 +14,7 @@ public class Company {
     private Employee[] empList;
     private int numEmployee;
     private static final int GROW_SIZE = 4;
+    private static final int EMPLOYEE_NOT_FOUND = -1;
     
     /**
      * The default constructor for the Company class creates a new array of
@@ -30,7 +31,14 @@ public class Company {
      * @return the index of the employee in the list, or -1 if not found
      */
     private int find (Employee employee) {
-        int index = 0;
+        int index = EMPLOYEE_NOT_FOUND;
+        Profile findEmployee = employee.getProfile();
+        for (int i = 0; i <numEmployee; i++){
+            Profile checkThisEmployee = empList[i].getProfile();
+            if (checkThisEmployee.equals(findEmployee))
+                index = i;
+            
+        }
         return index;
     }
     
@@ -54,9 +62,10 @@ public class Company {
      */
     public boolean add(Employee employee){
         int checkExists = find(employee);
-        if(checkExists == -1)
+        if(checkExists != EMPLOYEE_NOT_FOUND)
             return false;
         //Create a new instance of an employee and add it to the list
+        empList[numEmployee] = employee;
         numEmployee ++;
         return true;
     }
@@ -111,8 +120,8 @@ public class Company {
      */
     public void print(){
         System.out.println("--Printing earning statements for all employees--");
-        for (Employee employee : empList){
-            System.out.println(employee.toString());
+        for (int i = 0; i < empList.length; i++){
+            System.out.println(empList[i].toString());
         } 
     }
     
@@ -133,6 +142,7 @@ public class Company {
                     }
             }
         }
+        System.out.println("--Printing earning statements by department--");
         for (Employee employee : empList){
             System.out.println(employee.toString());
         }
@@ -150,7 +160,7 @@ public class Company {
                 Date empTwoDate = empList[j].getDate();
             }
         }
-        System.out.println("--Printing earning statements for all employees--");
+        System.out.println("--Printing earning statements by date hired--");
         for (Employee employee : empList){
             System.out.println(employee.toString());
         }
