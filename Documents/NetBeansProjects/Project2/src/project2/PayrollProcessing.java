@@ -130,6 +130,10 @@ public class PayrollProcessing {
                     company.printByDepartment();
                     break;
                     
+                case "Q" :
+                    System.out.println("Payroll processing ended");
+                    System.exit(0);
+                    
                 default:
                     System.out.println("Command " + curCommand + 
                                        " not supported");
