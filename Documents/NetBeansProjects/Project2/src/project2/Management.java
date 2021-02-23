@@ -34,6 +34,7 @@ public class Management extends Fulltime {
      */
     @Override
     public String toString(){
+    	this.calculatePayment();
         String empDetails = super.toString() + "::" + position + " compensation $" 
         		+ doubleToDollar(this.COMPENSATION[position]);
         return empDetails;

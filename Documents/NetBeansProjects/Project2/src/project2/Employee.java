@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 public class Employee {
     //private final String FIST_NAME;
     //private final String LAST_NAME;
+	private final double DEFAULT_PAYMENT_DUE = 0.0;
     private final String EMPLOYEE_NAME;
     private final String DEPARTMENT_CODE;
     private final Date HIRE_DATE;
@@ -25,7 +26,8 @@ public class Employee {
         this.EMPLOYEE_NAME = employeeName;
         this.DEPARTMENT_CODE = deptCode;
         this.HIRE_DATE = hireDate;
-        employeeProfile = new Profile(employeeName, deptCode, hireDate);
+        this.employeeProfile = new Profile(employeeName, deptCode, hireDate);
+        this.paymentDue = DEFAULT_PAYMENT_DUE;
     }
 
     /**

@@ -22,7 +22,7 @@ public class Profile {
      */
     @Override
     public String toString(){
-        String empProfile = "Profile toString";
+        String empProfile = this.NAME + "::" + this.DEPARTMENT + "::" + this.DATEHIRED;
         return empProfile;
     }
     /**

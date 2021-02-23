@@ -73,7 +73,8 @@ public class Date implements Comparable<Date> {
     
     @Override
     public String toString(){
-        return dateAsString;
+        String dateAsString = month + "/" + day + "/" + year; 
+    	return dateAsString;
     }
     /**
      * allows access to dates year value as a int
