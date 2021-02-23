@@ -65,6 +65,8 @@ public class Company {
         int checkExists = find(employee);
         if(checkExists != EMPLOYEE_NOT_FOUND)
             return false;
+        if(empList.length == numEmployee)
+            grow();
         //Create a new instance of an employee and add it to the list
         empList[numEmployee] = employee;
         numEmployee += 1;
@@ -122,7 +124,6 @@ public class Company {
     public void print(){
         System.out.println("--Printing earning statements for all employees--");
         for (int i = 0; i < numEmployee; i++){
-            System.out.println("Looping " + i);
             System.out.println(empList[i].toString());
         } 
     }
@@ -132,10 +133,6 @@ public class Company {
      * by the department code, and then prints all employees.
      */
     public void printByDepartment(){
-        if(checkEmpty()){
-            System.out.println("Employee Database is empty.");
-            return;
-        }
         Employee tempEmp;
         for(int i = 0; i<empList.length; i++){
             for(int j = 1; j<empList.length; j++){
@@ -152,18 +149,13 @@ public class Company {
         for (Employee employee : empList){
             System.out.println(employee.toString());
         }
-    } //print earning statements by department
+    }
     
     /**
      * The printByDate method sorts the employee list by their hire date then
      * prints the list of employees using the .toString() method
      */
-    public void printByDate(){
-//        if(checkEmpty()){
-//            System.out.println("Employee Database is empty.");
-//            return;
-//        }
-//            
+    public void printByDate(){           
         Employee tempEmp;
         for( int i = 0; i<empList.length; i++ ){
             for( int j = 1; j<empList.length; j++ ){

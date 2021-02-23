@@ -37,7 +37,7 @@ public class Employee {
     public String toString(){
     	this.calculatePayment();
         String empDetails = EMPLOYEE_NAME + "::" + DEPARTMENT_CODE
-        		+ "::" + HIRE_DATE + "::Payment $" + doubleToDollar(this.paymentDue);
+        		+ "::" + HIRE_DATE.toString() + "::Payment $" + doubleToDollar(this.paymentDue);
         return empDetails;
     }
 

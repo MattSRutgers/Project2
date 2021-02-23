@@ -18,11 +18,13 @@ public class Date implements Comparable<Date> {
     private static final int MAX_MONTH = 12;
     private static final int MIN_YEAR = 1900;
     private static final int DATE_BEFORE = -1;
+    private String dateAsString;
     /**
      * Constructor for the date class. Converts string representation into int
      * @param date a String representing the date in mm/dd/yyyy format
      */
     public Date(String date) {
+        this.dateAsString = date;
         String dateFormatter[] = date.split("/");
         this.month = Integer.parseInt(dateFormatter[0]);
         this.day = Integer.parseInt(dateFormatter[1]);
@@ -72,6 +74,11 @@ public class Date implements Comparable<Date> {
             validDay = checkDate.checkDate();
         }
         return validDay;
+    }
+    
+    @Override
+    public String toString(){
+        return dateAsString;
     }
     /**
      * allows access to dates year value as a int
