@@ -37,7 +37,6 @@ public class Company {
             Profile checkThisEmployee = empList[i].getProfile();
             if (checkThisEmployee.equals(findEmployee))
                 index = i;
-            
         }
         return index;
     }
@@ -109,8 +108,8 @@ public class Company {
      * calculates how much they should be paid this period.
      */
     public void processPayments(){
-        for (Employee employee : empList){
-            employee.calculatePayment();
+        for (int i = 0; i <numEmployee; i++){
+            empList[i].calculatePayment();
         }
     } //process payments for all employees
     
@@ -120,7 +119,7 @@ public class Company {
      */
     public void print(){
         System.out.println("--Printing earning statements for all employees--");
-        for (int i = 0; i < empList.length; i++){
+        for (int i = 0; i < numEmployee; i++){
             System.out.println(empList[i].toString());
         } 
     }
@@ -130,6 +129,10 @@ public class Company {
      * by the department code, and then prints all employees.
      */
     public void printByDepartment(){
+        if(checkEmpty()){
+            System.out.println("Employee Database is empty.");
+            return;
+        }
         Employee tempEmp;
         for(int i = 0; i<empList.length; i++){
             for(int j = 1; j<empList.length; j++){
@@ -139,7 +142,7 @@ public class Company {
                     tempEmp = empList[j-1];
                     empList[j-1] = empList[j];
                     empList[j] = tempEmp;
-                    }
+                }
             }
         }
         System.out.println("--Printing earning statements by department--");
@@ -153,16 +156,29 @@ public class Company {
      * prints the list of employees using the .toString() method
      */
     public void printByDate(){
+//        if(checkEmpty()){
+//            System.out.println("Employee Database is empty.");
+//            return;
+//        }
+//            
         Employee tempEmp;
-        for(int i = 0; i<empList.length; i++){
-            for(int j = 1; j<empList.length; j++){
+        for( int i = 0; i<empList.length; i++ ){
+            for( int j = 1; j<empList.length; j++ ){
                 Date empOneDate = empList[j-1].getDate();
                 Date empTwoDate = empList[j].getDate();
+                if(empOneDate.compareTo(empTwoDate) < 0 ){
+                    tempEmp = empList[j-1];
+                    empList[j-1] = empList[j];
+                    empList[j] = tempEmp;
             }
         }
         System.out.println("--Printing earning statements by date hired--");
         for (Employee employee : empList){
             System.out.println(employee.toString());
         }
+    }
+    }
+    public boolean checkEmpty(){
+        return numEmployee == 0;
     }
 }

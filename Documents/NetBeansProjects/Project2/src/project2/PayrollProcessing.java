@@ -81,14 +81,26 @@ public class PayrollProcessing {
                     break;
                     
                 case "PA":
+                    if (company.checkEmpty()){
+                        System.out.println("Employee database is empty ");
+                        break;
+                    }
                     company.print();
                     break;
                     
                 case "PH":
+                    if (company.checkEmpty()){
+                        System.out.println("Employee database is empty ");
+                        break;
+                    }
                     company.printByDate();
                     break;
                     
                 case "PD":
+                    if (company.checkEmpty()){
+                        System.out.println("Employee database is empty ");
+                        break;
+                    }
                     company.printByDepartment();
                     break;
                     
@@ -100,8 +112,5 @@ public class PayrollProcessing {
         }while(!"Q".equals(userCommand[0]));
         
 
-    }
-    private void checkDate(Date checkDate){
-    
     }
 }
