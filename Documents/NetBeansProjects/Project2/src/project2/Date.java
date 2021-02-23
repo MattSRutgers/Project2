@@ -45,6 +45,7 @@ public class Date implements Comparable<Date> {
      */
     @Override
     public int compareTo(Date date){
+    	//System.out.println("comparing by date");
         int compareDate = 1;
         if(this.year == date.year)
             if(this.month > date.month)

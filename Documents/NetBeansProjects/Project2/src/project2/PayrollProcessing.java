@@ -21,15 +21,19 @@ public class PayrollProcessing {
             Date newHireDate = null;
             double payRate = 0;
             //Check the hire date is valid
-            try{
-            hireDate = userCommand[3];
-            payRate = Double.valueOf(userCommand[4]);
-            newHireDate = new Date(hireDate);
-            if (!newHireDate.isValid()){
-                System.out.println( userCommand[3] + " is not a valid date");
-                continue;
+            try {
+	            hireDate = userCommand[3];
+	            newHireDate = new Date(hireDate);
+	            if (!newHireDate.isValid()){
+	                System.out.println( userCommand[3] + " is not a valid date");
+	                continue;
+	            }
             }
-            }catch(IndexOutOfBoundsException e){}
+            catch(IndexOutOfBoundsException e){}
+            try{
+            	payRate = Double.valueOf(userCommand[4]);
+            }
+            catch(IndexOutOfBoundsException e){}
             String curCommand = userCommand[0];
 
             switch (curCommand){
@@ -75,6 +79,7 @@ public class PayrollProcessing {
                     break;
 
                 case "R":
+                	System.out.println("Checking Date:" + newHireDate);
                     Employee removeEmployee = new Employee(userCommand[1],
                             userCommand[2], newHireDate);
                     if(company.remove(removeEmployee))

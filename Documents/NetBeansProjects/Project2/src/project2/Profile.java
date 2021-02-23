@@ -32,16 +32,13 @@ public class Profile {
      */
     @Override
     public boolean equals(Object obj){
-        //String date = DATEHIRED.toString();
-        //System.out.println(date);
-        //String findDate = ((Profile) obj).DATEHIRED.toString();
         if (obj instanceof Profile){
             if (this.NAME.equalsIgnoreCase(((Profile) obj).NAME)){
-                System.out.println("Name equal");
+                //System.out.println("Name equal");
                 if(this.DEPARTMENT.equalsIgnoreCase(((Profile) obj).DEPARTMENT)){
-                    System.out.println("Dept equal");
+                    //System.out.println("Dept equal");
                     if(this.DATEHIRED.compareTo(((Profile) obj).DATEHIRED) == 0){
-                        System.out.println("Date equal");
+                       // System.out.println("Date equal");
                         return true;
                     }
                 }
