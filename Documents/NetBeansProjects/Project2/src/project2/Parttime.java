@@ -27,7 +27,7 @@ public class Parttime extends Employee {
 	/**
 	 * @return an employee's total hours for the current payment period
 	 */
-	public double getHours() {
+	public int getHours() {
 		return this.hoursWorked;
 	}
 
@@ -62,7 +62,7 @@ public class Parttime extends Employee {
      */
     @Override
     public String toString(){
-				this.calulatePayment();
+		this.calculatePayment();
         String empDetails = super.toString() + "::PART TIME::Hourly Rate $" +
         		doubleToDollar(this.hourlyRate) + "::Hours worked this period: "
         		+ hoursWorked;

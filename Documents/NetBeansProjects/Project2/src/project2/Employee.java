@@ -98,6 +98,9 @@ public class Employee {
 	 * @return a string that is in US dollar conventions
 	 */
 	public static String doubleToDollar(double value) {
+		if(value == 0) {
+			return "0.00";
+		}
 		DecimalFormat dollarFormatter = new DecimalFormat("#.00");
     	dollarFormatter.setGroupingUsed(true);
     	dollarFormatter.setGroupingSize(3);

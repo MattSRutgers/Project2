@@ -100,7 +100,7 @@ public class PayrollProcessing {
 //                        hoursWorked = Integer.getInteger(userCommand[4]);
 //                    }catch(IndexOutOfBoundsException event){}
                     Parttime updateHours = new Parttime(userCommand[1],
-                        userCommand[2], newHireDate);
+                        userCommand[2], newHireDate, hoursWorked);
                     updateHours.setHours(hoursWorked);
                     System.out.println("Part time hours worked" + hoursWorked);
                     if( ! company.setHours(updateHours))
