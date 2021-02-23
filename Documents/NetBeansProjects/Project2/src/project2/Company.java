@@ -106,6 +106,7 @@ public class Company {
         //empList[getIndex].setHours(workedHours);
         ((Parttime)empList[getIndex]).setHours(workedHours);
         //Parttime tempEmp = (Parttime)empList[getIndex];
+        Parttime tempEmp = (Parttime)empList[getIndex];
         //System.out.println(" after i think i added " +tempEmp.getHours());
         return true;
     }

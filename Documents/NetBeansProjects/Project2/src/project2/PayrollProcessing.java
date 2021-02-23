@@ -94,6 +94,7 @@ public class PayrollProcessing {
                     break;
 
                 case "R":
+                	System.out.println("Checking Date:" + newHireDate);
                     Employee removeEmployee = new Employee(userCommand[1],
                             deptCode, newHireDate);
                     if(company.remove(removeEmployee))
