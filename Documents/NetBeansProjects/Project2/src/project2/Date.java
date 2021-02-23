@@ -13,6 +13,7 @@ public class Date implements Comparable<Date> {
     private static final int MAX_MONTH = 12;
     private static final int MIN_YEAR = 1900;
     private static final int DATE_BEFORE = -1;
+    private static final int DATE_AFTER = 1;
     private String dateAsString;
     /**
      * Constructor for the date class. Converts string representation into int
@@ -45,9 +46,10 @@ public class Date implements Comparable<Date> {
      */
     @Override
     public int compareTo(Date date){
-    	//System.out.println("comparing by date");
-        int compareDate = 1;
-        if(this.year == date.year)
+        int compareDate = DATE_AFTER;
+        if(this.year > date.year)
+        	compareDate = DATE_BEFORE;
+        else if(this.year == date.year)
             if(this.month > date.month)
                 compareDate = DATE_BEFORE;
             else if( this.month == date.month)
