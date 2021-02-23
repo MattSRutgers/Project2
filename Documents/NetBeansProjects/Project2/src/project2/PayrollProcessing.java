@@ -129,6 +129,7 @@ public class PayrollProcessing {
                     //System.out.println("Part time hours worked" + hoursWorked);
 //                    if( ! company.setHours(updateHours))
 //                        System.out.println("Hours not updated");
+                    System.out.println("Working hours set.");
                     break;
 
                 case "PA":
