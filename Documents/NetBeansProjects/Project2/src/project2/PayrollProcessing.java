@@ -8,11 +8,16 @@ import java.util.Scanner;
 public class PayrollProcessing {
     Scanner sc = new Scanner(System.in);
     private String[] userCommand;
+    //private final String[] VALID_DEPT_CODE = {"CS", "ECE", "IT"};
     Company company = new Company();
     private static final int MAX_MANAGER_CODE = 3;
+    //private String[] validDeptCode = new String["CS"];
 
     public void run(){
         System.out.println("Payroll Processsing starts.");
+        //validCommands = new String["CS", "ECE", "IT"];
+        //private String[] validCommands = {"CS", "ECE", "IT"};
+        //private String[] validDeptCode = new String["CS"];
 
         do {
             String userInput = sc.nextLine();
@@ -20,6 +25,17 @@ public class PayrollProcessing {
             String hireDate;
             Date newHireDate = null;
             double payRate = 0;
+            String deptCode = "";
+            String testCode;
+            try{
+                testCode = userCommand[2];
+                if(testCode.equals("CS") || testCode.equals("ECE") || testCode.equals("IT"))
+                    deptCode = testCode;
+                else{
+                    System.out.println("Invalid Department Code");
+                    continue;
+                }
+            }catch(IndexOutOfBoundsException e){}
             //Check the hire date is valid
             try{
             hireDate = userCommand[3];
@@ -43,7 +59,7 @@ public class PayrollProcessing {
                         break;
                     }
                     Employee newPartTimer = new Parttime(userCommand[1],
-                    userCommand[2], newHireDate, payRate);
+                    deptCode, newHireDate, payRate);
                     company.add(newPartTimer);
                     System.out.println("Part time employee added.");
                     break;
@@ -54,7 +70,7 @@ public class PayrollProcessing {
                         break;
                     }
                     Employee newFullTimer = new Fulltime(userCommand[1],
-                    userCommand[2], newHireDate, payRate);
+                    deptCode, newHireDate, payRate);
                     company.add(newFullTimer);
                     System.out.println("Full time employee added.");
                     break;
@@ -71,7 +87,7 @@ public class PayrollProcessing {
                     }
                     managerCode -= 1;
                     Employee newManager = new Management(userCommand[1],
-                        userCommand[2], newHireDate, payRate,
+                        deptCode, newHireDate, payRate,
                         managerCode);
                     company.add(newManager);
                     System.out.println("Manager Added.");
@@ -79,7 +95,7 @@ public class PayrollProcessing {
 
                 case "R":
                     Employee removeEmployee = new Employee(userCommand[1],
-                            userCommand[2], newHireDate);
+                            deptCode, newHireDate);
                     if(company.remove(removeEmployee))
                         System.out.println("Employee removed");
                     else
@@ -98,16 +114,20 @@ public class PayrollProcessing {
                     if (company.checkEmpty())
                         System.out.println("Employee database is empty");
                     int hoursWorked = (int) payRate;
-                    System.out.println("Hours worked " + hoursWorked);
+                    if (hoursWorked < 0 || hoursWorked >100){
+                        System.out.println("Invalid Hours");
+                        break;
+                    }
+                    //System.out.println("Hours worked " + hoursWorked);
 //                    try{
 //                        hoursWorked = Integer.getInteger(userCommand[4]);
 //                    }catch(IndexOutOfBoundsException event){}
                     Parttime updateHours = new Parttime(userCommand[1],
-                        userCommand[2], newHireDate, hoursWorked);
+                        deptCode, newHireDate, hoursWorked);
                     updateHours.setHours(hoursWorked);
-                    System.out.println("Part time hours worked" + hoursWorked);
-                    if( ! company.setHours(updateHours))
-                        System.out.println("Hours not updated");
+                    //System.out.println("Part time hours worked" + hoursWorked);
+//                    if( ! company.setHours(updateHours))
+//                        System.out.println("Hours not updated");
                     break;
 
                 case "PA":
