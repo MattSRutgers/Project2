@@ -6,18 +6,13 @@ import java.util.Scanner;
  *
  */
 public class PayrollProcessing {
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
     private String[] userCommand;
-    //private final String[] VALID_DEPT_CODE = {"CS", "ECE", "IT"};
-    Company company = new Company();
+    private Company company = new Company();
     private static final int MAX_MANAGER_CODE = 3;
-    //private String[] validDeptCode = new String["CS"];
 
     public void run(){
         System.out.println("Payroll Processsing starts.");
-        //validCommands = new String["CS", "ECE", "IT"];
-        //private String[] validCommands = {"CS", "ECE", "IT"};
-        //private String[] validDeptCode = new String["CS"];
 
         do {
             String userInput = sc.nextLine();
@@ -36,7 +31,6 @@ public class PayrollProcessing {
                     continue;
                 }
             }catch(IndexOutOfBoundsException e){}
-            //Check the hire date is valid
             try{
             hireDate = userCommand[3];
                 newHireDate = new Date(hireDate);

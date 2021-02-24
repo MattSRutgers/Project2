@@ -30,13 +30,6 @@ public class Fulltime extends Employee {
 	}
 
 	/**
-	 * @param annualSalary value which annualSalary will be set to
-	 */
-	public void setAnnualSalary(double annualSalary) {
-		this.annualSalary = annualSalary;
-	}
-
-	/**
 	 * The calulatePayment method calculates the payment for a full time
 	 * employee in the current payment period
 	 */
