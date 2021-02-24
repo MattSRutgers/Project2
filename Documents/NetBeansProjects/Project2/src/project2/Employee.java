@@ -97,7 +97,7 @@ public class Employee {
 	 * @param value the double value to be converted
 	 * @return a string that is in US dollar conventions
 	 */
-	public static String doubleToDollar(double value) {
+	protected static String doubleToDollar(double value) {
 		if(value == 0) {
 			return "0.00";
 		}
